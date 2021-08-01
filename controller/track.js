@@ -39,12 +39,24 @@ const handeGetTrack = async (req, res, next) => {
   const stat = fs.statSync(filePath);
   const readStream = fs.createReadStream(filePath);
 
+  readStream.on("close", function () {
+    res.end();
+  });
+
+  readStream.on("end", function () {
+    res.end();
+  });
+
+  readStream.on("error", function () {
+    res.end();
+  });
+
   res.writeHead(200, {
     "Content-Type": "audio/mp3",
     "Content-Length": stat.size,
   });
 
-  readStream.pipe(res, { end: false });
+  readStream.pipe(res, { end: true });
 };
 
 const handleDownloadTrack = async (req, res, next) => {
