@@ -1,0 +1,25 @@
+{
+  "name": "MusicCloudBE",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon ./www/www.js",
+    "startpm2": "pm2 start ./www/www.js",
+    "stoppm2": "pm2 stop ./www/www.js",
+    "deletepm2": "pm2 delete ./www/www.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "googleapis": "^39.2.0",
+    "mongodb": "^4.0.1",
+    "nodemon": "^2.0.9",
+    "pm2": "^5.1.0",
+    "selenium-webdriver": "^4.0.0-beta.4",
+    "youtube-dl-exec": "^1.2.4"
+  }
+}
