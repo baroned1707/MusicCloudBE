@@ -128,8 +128,6 @@ const handleSearch = async (req, res, next) => {
     }
     console.log(keywork);
     keywork = String(keywork);
-    keywork = keywork.replaceAll(" ", "+");
-    keywork = keywork.replaceAll("=", "");
 
     var data = [];
     var limit = 3;
