@@ -126,6 +126,7 @@ const handleSearch = async (req, res, next) => {
       await driver.quit();
       return next(new Error("404:Not found Keywork !"));
     }
+    keywork = String(keywork);
     keywork = keywork.replaceAll(" ", "+");
     keywork = keywork.replaceAll("=", "");
 
