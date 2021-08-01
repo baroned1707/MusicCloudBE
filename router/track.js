@@ -1,4 +1,4 @@
-const { handeGetTrack } = require("../controller/track");
+const { handeGetTrack, handleDownloadTrack } = require("../controller/track");
 const { handleCrawlPlayList, handleCrawlTrackList, handleAnalytist, handleSearch } = require("../resrc/crawl");
 const router = require("express").Router();
 
@@ -37,6 +37,14 @@ router.get("/analytist", async (req, res, next) => {
 router.get("/search", async (req, res, next) => {
   try {
     await handleSearch(req, res, next);
+  } catch (e) {
+    next(new Error(`400:${e.message}`));
+  }
+});
+
+router.get("/download", async (req, res, next) => {
+  try {
+    await handleDownloadTrack(req, res, next);
   } catch (e) {
     next(new Error(`400:${e.message}`));
   }
