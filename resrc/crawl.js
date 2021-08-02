@@ -129,7 +129,7 @@ const handleSearch = async (req, res, next) => {
     keywork = String(keywork);
 
     var data = [];
-    var limit = 3;
+    var limit = 10;
     var linkSearch = "https://www.youtube.com/results?app=desktop&search_query=" + keywork;
 
     await driver.get(linkSearch);
