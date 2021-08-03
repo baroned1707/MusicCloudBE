@@ -1,13 +1,11 @@
-const { service, edegOption } = require("../config/selenium");
+const { driver } = require("../config/selenium");
 const { Builder } = require("selenium-webdriver");
 const { fixTextSpaceAndLine } = require("./function");
 const albums = require("../temp/data.json");
 var url = require("url");
-const { query } = require("express");
 
 const handleCrawlPlayList = async (req, res, next) => {
   const data = [];
-  const driver = new Builder().forBrowser("MicrosoftEdge").setEdgeService(service).setEdgeOptions(edegOption).build();
   try {
     await driver.get("https://www.youtube.com/channel/UC-9-kyTW8ZkZNDHQJ6FgpwQ/featured");
     const buttons = await driver.findElements({
@@ -64,7 +62,6 @@ const handleCrawlPlayList = async (req, res, next) => {
 };
 
 const handleCrawlTrackList = async (req, res, next) => {
-  const driver = new Builder().forBrowser("MicrosoftEdge").setEdgeService(service).setEdgeOptions(edegOption).build();
   try {
     var data = [];
 
@@ -119,7 +116,6 @@ const handleCrawlTrackList = async (req, res, next) => {
 };
 
 const handleSearch = async (req, res, next) => {
-  const driver = new Builder().forBrowser("MicrosoftEdge").setEdgeService(service).setEdgeOptions(edegOption).build();
   try {
     var keywork = req.query.keywork;
     if (typeof keywork != "string") {
