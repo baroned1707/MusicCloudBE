@@ -16,18 +16,18 @@ const handeGetTrack = async (req, res, next) => {
   var link = "https://www.youtube.com/watch?v=" + query.link;
 
   const filename = query.link + ".mp3";
-  const filePath = path.join(__dirname.replace("/controller", "") + "/track", filename);
+  const filePath = path.join(__dirname.replace("\\controller", "") + "/track", filename);
 
   //handle check file name has existd
-  var tracksName = await fs.readdirSync(path.join(__dirname.replace("/controller", "") + "/track"));
+  var tracksName = await fs.readdirSync(path.join(__dirname.replace("\\controller", "") + "/track"));
   if (tracksName.includes(filename) == false) {
-    const driverPath = path.join(__dirname.replace("/controller", "") + "/driver", "ffmpeg.exe");
+    const driverPath = path.join(__dirname.replace("\\controller", "") + "/driver", "ffmpeg.exe");
     await ydl(link, {
       extractAudio: true,
       audioFormat: "mp3",
       output: filePath,
       referer: query.link,
-      // ffmpegLocation: driverPath,
+      ffmpegLocation: driverPath,
     });
     const props = {
       filename: filename,
