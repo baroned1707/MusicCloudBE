@@ -1,6 +1,8 @@
-// const path = require("path");
-// const webdriver = require("selenium-webdriver");
-// const { Builder } = require("selenium-webdriver");
+const path = require("path");
+const webdriver = require("selenium-webdriver");
+const { Builder } = require("selenium-webdriver");
+
+//edge
 // const edge = require("selenium-webdriver/edge");
 // const pathEdgeDriver = path.join(__dirname.replace("\\config", "") + "\\driver") + "\\msedgedriver.exe";
 // const service = new edge.ServiceBuilder(pathEdgeDriver);
@@ -10,7 +12,6 @@
 // const driverEdge = new Builder().forBrowser("MicrosoftEdge").setEdgeService(service).setEdgeOptions(edegOption).build();
 
 //chorme
-
 const chrome = require("selenium-webdriver/chrome");
 
 let options = new chrome.Options();
