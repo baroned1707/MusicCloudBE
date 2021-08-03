@@ -20,12 +20,14 @@ const handeGetTrack = async (req, res, next) => {
 
   //handle check file name has existd
   var tracksName = await fs.readdirSync(path.join(__dirname.replace("\\controller", "") + "/track"));
+
+  //replace mp3 to %(ext)s fix audio on safari
   if (tracksName.includes(filename) == false) {
-    const driverPath = path.join(__dirname.replace("\\controller", "") + "/driver", "ffmpeg.exe");
+    const driverPath = path.join(__dirname.replace("\\controller", "") + "/driver", "ffprobe.exe");
     await ydl(link, {
       extractAudio: true,
       audioFormat: "mp3",
-      output: filePath,
+      output: filePath.replace("mp3", "%(ext)s"),
       referer: query.link,
       ffmpegLocation: driverPath,
     });
@@ -36,7 +38,8 @@ const handeGetTrack = async (req, res, next) => {
     runCommad(uploadFile, props);
   }
 
-  return res.sendFile(filePath);
+  //send file
+  res.sendFile(filePath);
 };
 
 const handleDownloadTrack = async (req, res, next) => {
