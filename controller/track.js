@@ -27,7 +27,7 @@ const handeGetTrack = async (req, res, next) => {
       audioFormat: "mp3",
       output: filePath,
       referer: query.link,
-      ffmpegLocation: driverPath,
+      // ffmpegLocation: driverPath,
     });
     const props = {
       filename: filename,
